@@ -1,0 +1,74 @@
+<div>
+    <h2>Outputs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="output.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Output
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Kode</span></th>
+                    <th><span>Judul</span></th>
+                    <th><span>Volume</span></th>
+                    <th><span>Satuan</span></th>
+                    <th><span>Created Date</span></th>
+                    <th><span>Created By</span></th>
+                    <th><span>Updated Date</span></th>
+                    <th><span>Updated By</span></th>
+                    <th><span>Kegiatan</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="output in vm.outputs track by output.id">
+                    <td><a ui-sref="output-detail({id:output.id})">{{output.id}}</a></td>
+                    <td>{{output.kode}}</td>
+                    <td>{{output.judul}}</td>
+                    <td>{{output.volume}}</td>
+                    <td>{{output.satuan}}</td>
+                    <td>{{output.createdDate | date:'medium'}}</td>
+                    <td>{{output.createdBy}}</td>
+                    <td>{{output.updatedDate | date:'medium'}}</td>
+                    <td>{{output.updatedBy}}</td>
+                    <td>
+                        <a ui-sref="kegiatan-detail({id:output.kegiatan.id})">{{output.kegiatan.kode}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="output-detail({id:output.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="output.edit({id:output.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="output.delete({id:output.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOutputLabel">Create or edit a Output</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.output.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.output.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_kode">Kode</label>
+            <input type="text" class="form-control" name="kode" id="field_kode"
+                    ng-model="vm.output.kode"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_judul">Judul</label>
+            <input type="text" class="form-control" name="judul" id="field_judul"
+                    ng-model="vm.output.judul"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_volume">Volume</label>
+            <input type="number" class="form-control" name="volume" id="field_volume"
+                    ng-model="vm.output.volume"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_satuan">Satuan</label>
+            <input type="text" class="form-control" name="satuan" id="field_satuan"
+                    ng-model="vm.output.satuan"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">Created Date</label>
+                <div class="input-group">
+                    <input id="field_createdDate" type="text" class="form-control" name="createdDate" datetime-picker="{{dateformat}}" ng-model="vm.output.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                    ng-model="vm.output.createdBy"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedDate">Updated Date</label>
+                <div class="input-group">
+                    <input id="field_updatedDate" type="text" class="form-control" name="updatedDate" datetime-picker="{{dateformat}}" ng-model="vm.output.updatedDate" is-open="vm.datePickerOpenStatus.updatedDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updatedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedBy">Updated By</label>
+            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                    ng-model="vm.output.updatedBy"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_kegiatan">Kegiatan</label>
+            <select class="form-control" id="field_kegiatan" name="kegiatan" ng-model="vm.output.kegiatan" ng-options="kegiatan as kegiatan.kode for kegiatan in vm.kegiatans track by kegiatan.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
